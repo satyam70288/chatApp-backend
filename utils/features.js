@@ -11,15 +11,19 @@ const cookieOptions = {
   secure: true,
 };
 
-const connectDB = (uri) => {
-  mongoose
-    .connect(uri, { dbName: "Chattu" })
-    .then((data) => console.log(`Connected to DB: ${data.connection.host}`))
-    .catch((err) => {
-      throw err;
+const connectDB = async (uri) => {
+  try {
+    const connection = await mongoose.connect(uri, {
+      dbName: 'Chattu', // Specify the database name
+      useNewUrlParser: true, // Ensure the new URL parser is used (optional in recent Mongoose versions)
+      useUnifiedTopology: true, // Use the new server discovery and monitoring engine
     });
+    console.log(`✅ Connected to DB: ${connection.connection.host}`);
+  } catch (error) {
+    console.error('❌ MongoDB connection failed:', error.message);
+    process.exit(1); // Exit process with failure
+  }
 };
-
 const sendToken = (res, user, code, message) => {
   const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
 
