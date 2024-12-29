@@ -7,7 +7,7 @@ import {
   allUsers,
   getAdminData,
   getDashboardStats,
-} from "../controllers/admin.js";
+} from "../controller/admin.js";
 import { adminLoginValidator, validateHandler } from "../lib/validators.js";
 import { adminOnly } from "../middlewares/auth.js";
 

@@ -11,7 +11,7 @@ import {
   removeMember,
   renameGroup,
   sendAttachments,
-} from "../controllers/chat.js";
+} from "../controller/chat.js";
 import {
   addMemberValidator,
   chatIdValidator,

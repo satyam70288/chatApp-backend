@@ -9,7 +9,7 @@ import {
   newUser,
   searchUser,
   sendFriendRequest,
-} from "../controllers/user.js";
+} from "../controller/user.js";
 import {
   acceptRequestValidator,
   loginValidator,
