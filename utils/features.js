@@ -38,6 +38,7 @@ const emitEvent = (req, event, users, data) => {
 
 const uploadFilesToCloudinary = async (files = []) => {
   const uploadPromises = files.map((file) => {
+    console.log(file);
     return new Promise((resolve, reject) => {
       cloudinary.uploader.upload(
         getBase64(file),
@@ -55,6 +56,7 @@ const uploadFilesToCloudinary = async (files = []) => {
 
   try {
     const results = await Promise.all(uploadPromises);
+    console.log(results);
 
     const formattedResults = results.map((result) => ({
       public_id: result.public_id,
@@ -62,7 +64,7 @@ const uploadFilesToCloudinary = async (files = []) => {
     }));
     return formattedResults;
   } catch (err) {
-    throw new Error("Error uploading files to cloudinary", err);
+    throw new Error(`Error uploading files to Cloudinary: ${err.message}`);
   }
 };
 
