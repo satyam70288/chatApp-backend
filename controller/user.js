@@ -1,4 +1,6 @@
-import { compare } from "bcryptjs";
+import bcrypt from 'bcryptjs';
+const { compare } = bcrypt;
+
 import { NEW_REQUEST, REFETCH_CHATS } from "../constants/events.js";
 import { getOtherMember } from "../lib/helper.js";
 import { TryCatch } from "../middlewares/error.js";

@@ -1,5 +1,6 @@
 import mongoose, { Schema, model } from "mongoose";
-import { hash } from "bcryptj";
+import bcrypt from 'bcryptjs';
+const { hash } = bcrypt;
 
 const schema = new Schema(
   {
